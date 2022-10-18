@@ -4,8 +4,10 @@ Free pre- installed four(4) extensions with this theme
  - Infinite Scroll Extension
  - Order on WhatsApp
  - Newsletter Popup
- - Most Viewed Products
+ - Most Viewed Products 
+
 Features
+
  - Easy Header Customization
  - Easy Homepage Slider Customization
  - Homepage Customizations
