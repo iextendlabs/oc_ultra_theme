@@ -1,0 +1,25 @@
+<h1 style="color: #303055; margin-bottom: 100px; text-align: center; font-size: 40px; font-weight: 600; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; letter-spacing: 2px">{{ module_name }}</h1 >
+  <div class="row">
+   {% for product in products %}
+    <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="product-thumb transition">
+        <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
+        <div class="caption">
+          <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+          {% if product.price %}
+          <p class="price">
+            {% if not product.special %}
+            {{ product.price }}
+            {% else %}
+            <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+            {% endif %}
+            {% if product.tax %}
+            <span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
+            {% endif %}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>

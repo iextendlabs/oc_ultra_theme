@@ -1,0 +1,76 @@
+<footer>
+  <div class="container">
+    <div class="row" style="padding-bottom: 20px;">
+      <div class="col-sm-4">
+        <h3 style="color: {{footer_top_text_color}}; font-size: 24px; font-family: 'Poppins',sans-serif; font-weight: 600; padding-bottom: 40px;"> <b>{{ footer_top_text }}</b></h3>
+        <a href="{{ contact }}"> <h2 style="color: {{contact_number_color}}; padding-left: 25px; font-size: 20px; " class="hidden-xs hidden-sm hidden-md"><i style="font-size:25px;" class="fa fa-phone"></i> <span class="hidden-xs hidden-sm hidden-md" style="font-size: 30px; font-weight: 600; letter-spacing: 2px;"> {{ telephone }}</span></h2></a>
+      </div>
+      <div class="col-sm-8">
+        <img src="{{ footer_top_image }}" alt="Top Image" class="img-responsive">
+      </div>
+    </div>
+    <hr>
+    <div class="row" style="padding-top: 30px;">
+      <div class="col-sm-2">
+        <div id="logo">{% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
+          <h1><a href="{{ home }}">{{ name }}</a></h1>
+          {% endif %}</div>
+      </div>
+      <div class="col-sm-2">
+        <h3 style="color: {{footer_text_color}}; font-size: larger;"> <b>{{ footer_text }}</b></h3>
+      </div>
+      <div class="col-sm-2">
+        <h5>{{ text_account }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ account }}">{{ text_account }}</a></li>
+          <li><a href="{{ order }}">{{ text_order }}</a></li>
+          <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
+          <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-2">
+        <h5>{{ text_service }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+          <li><a href="{{ return }}">{{ text_return }}</a></li>
+          <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-2">
+        <h5>{{ text_extra }}</h5>
+        <ul class="list-unstyled">
+          <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
+          <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
+          <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
+          <li><a href="{{ special }}">{{ text_special }}</a></li>
+        </ul>
+      </div>
+      
+      {% if informations %}
+      <div class="col-sm-2">
+        <h5>{{ text_information }}</h5>
+        <ul class="list-unstyled">
+         {% for information in informations %}
+          <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      
+    </div>
+    <hr>
+    <p class="pull-right">{{ powered }}</p>
+    <p>{{ decor_guys }}</p>
+  </div>
+</footer>
+{% for style in styles %}
+<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+{% endfor %}
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<!--
+OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+Please donate via PayPal to donate@opencart.com
+//-->
+</body></html>

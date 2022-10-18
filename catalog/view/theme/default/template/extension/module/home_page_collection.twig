@@ -1,0 +1,40 @@
+<div class="row" style="padding-top: 40px; padding-bottom: 15px;">
+  <div class="col-sm-4">
+    <div style="margin-left: 45px;">
+      <div class="col-sm-2"><i class="{{ heading1_icon }}" style="font-size: x-large; margin-top: 30px; color: {{icon_color}};"></i></div>
+      <div class="col-sm-10 home-page-top">
+        <h3 style="color: {{ headings_color }};">{{ heading1 }}</h3>
+        <p>{{ heading1_data }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div style="margin-left: 45px;">
+      <div class="col-sm-2"><i class="{{ heading2_icon }}" style="font-size: x-large; margin-top: 30px; color: {{icon_color}};"></i></div>
+      <div class="col-sm-10 home-page-top">
+        <h3 style="color: {{ headings_color }};">{{ heading2 }}</h3>
+        <p>{{ heading2_data }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div style="margin-left: 45px;">
+      <div class="col-sm-2"><i class="{{ heading3_icon }}" style="font-size: x-large; margin-top: 30px; color: {{icon_color}};"></i></div>
+      <div class="col-sm-10 home-page-top">
+        <h3 style="color: {{ headings_color }};">{{ heading3 }}</h3>
+        <p>{{ heading3_data }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+ {% for banner in banners %}
+  <div class="home-collection col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div>
+      <div class="image"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" /></div>
+    </div>
+    <h3>{{ banner.title }}</h3>
+    <a href="{{ banner.link }}">See Collection</a>
+  </div>
+  {% endfor %}
+</div>

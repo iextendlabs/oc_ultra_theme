@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="{{ direction }}" lang="{{ lang }}">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{ title }}</title>
+<base href="{{ base }}" />
+{% if description %}
+<meta name="description" content="{{ description }}" />
+{% endif %}
+{% if keywords %}
+<meta name="keywords" content="{{ keywords }}" />
+{% endif %}
+<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
+<link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
+{% for style in styles %}
+<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+{% endfor %}
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+{% for link in links %}
+<link href="{{ link.href }}" rel="{{ link.rel }}" />
+{% endfor %}
+{% for analytic in analytics %}
+{{ analytic }}
+{% endfor %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap" rel="stylesheet">
+<style>
+  .panel-heading{
+    background-color: {{ module_checkout_header_color }} !important;
+    color: {{ module_checkout_header_text_color }} !important;
+  }
+  .btn-primary {
+    color: {{ module_checkout_button_text_color }} !important;
+    background-color: {{ module_checkout_button_color }} !important;
+    background-image: linear-gradient(to bottom, {{ module_checkout_button_color }}, {{ module_checkout_button_color }}) !important;
+    background-repeat: repeat-x;
+    border-color: {{ module_checkout_button_text_color }} !important;
+  }
+  /* .breadcrumb a {
+    color: violet;
+    font-size: 15px;
+  }
+ 
+  .breadcrumb {
+    background: red;
+  } */
+  /* Header Link */
+  #top .btn-link, #top-links li, #top-links a {
+	color: {{ header_link_color }};
+	text-shadow: 0 1px 0 #FFF;
+	text-decoration: none;
+	padding: 8px;
+  }
+  #top .btn-link:hover, #top-links a:hover {
+    color: {{ header_link_hover_color }};
+  }
+  #cart > .btn {
+	color: {{ header_link_color }};
+  background: white;
+  border: none;
+  }
+  #cart.open > .btn  {
+    color: {{ header_link_hover_color }};;
+  }
+  #cart .dropdown-menu {
+    background: {{ header_background_color }};
+  }
+  #top-links .dropdown-menu a:hover{
+    color: {{ header_link_hover_color }};
+  }
+  /* Menu */
+  #menu {
+	background-color: {{header_menu_color}};
+  }
+  #menu .nav > li > a {
+    color: #fff;
+  }
+  #menu .nav > li > a:hover, #menu .nav > li.open > a {
+    background-color: {{header_menu_hover_color}};
+  }
+  /* Footer */
+  footer {
+    background-color: {{ footer_background_color }};
+  }
+  footer a {
+    color: {{ footer_link_color }};
+  }
+  footer a:hover {
+    color: {{ footer_link_hover_color }};
+  }
+  footer h5 {
+    color: {{footer_heading_color}};
+  }
+  footer p {
+    color: {{ footer_link_color }};
+  }
+  /* PopUp Newsletter */
+  #popUpMain{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, 0.6);
+    z-index: 1001;
+    font-family: 'verdana 27px', sans-serif;
+  }
+  #popUp{
+    width: 500px;
+    height: 250px;
+    background-image: linear-gradient(rgba(70, 63, 63, 0.5),rgba(70, 63, 63, 0.5)), url({{newsletter_image}});
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px,2px,5px,3px,white;
+    text-align: center;
+  }
+
+  #popUp h1{
+    transform: translateY(30px);
+    color: {{ newsletter_text_color }};
+    font-family: 'verdana 27px', sans-serif;
+  }
+
+  #popUp input{
+    width: 60%;
+    padding: 5px;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-family: 'verdana 27px', sans-serif;
+  }
+
+  #popUp button{
+    background-color:  {{ newsletter_button_color }};
+    border: none;
+    font-size: 1.3rem;
+    padding: 0.6rem 1rem;
+    color:white;
+    font-family: 'verdana 27px', sans-serif;
+  }
+
+  @media only screen and (max-width:400px) {
+    #popUp{
+      width: 300px;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="popUpMain" style="display: none;">
+  <div id="popUp">
+    <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-newsletter">
+      <h1>{{ newsletter_text }}</h1>
+      <input type="email" name="email" id="emial" placeholder="user@gmail.com" required><br>
+      <button type="submit" id="submit" class="submitId">Subscribe</button>
+    </form>
+    <br><button id="cancel" class="submitId">Cancel</button>
+  </div>
+</div>
+<nav id="top" style="background-color: {{ header_background_color }};">
+  <div class="container">
+    {{ language }}
+    <div class="nav pull-left">
+      <ul class="list-inline">
+        <li><a href="{{ contact }}"> <h2 style="color: {{contact_number_color}}; " class="hidden-xs hidden-sm hidden-md"><i style="font-size:large;"class="fa fa-phone"></i> <span class="hidden-xs hidden-sm hidden-md" style="font-size: large;"> {{ telephone }}</span></h2></a></li>
+        <li><h3 style="color: {{header_text_color}}; font-size: 18px;"> <b> {{ header_text }}</b></h3></li>
+      </ul>
+    </div>
+    <div id="top-links" class="nav pull-right">
+      <ul class="list-inline">
+        <li class="dropdown"><a href="{{ account }}" title="{{ text_account }}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_account }}</span> <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            {% if logged %}
+            <li><a href="{{ account }}">{{ text_account }}</a></li>
+            <li><a href="{{ order }}">{{ text_order }}</a></li>
+            <li><a href="{{ transaction }}">{{ text_transaction }}</a></li>
+            <li><a href="{{ download }}">{{ text_download }}</a></li>
+            <li><a href="{{ logout }}">{{ text_logout }}</a></li>
+            {% else %}
+            <li><a href="{{ register }}">{{ text_register }}</a></li>
+            <li><a href="{{ login }}">{{ text_login }}</a></li>
+            {% endif %}
+          </ul>
+        </li>
+        <li><a href="{{ shopping_cart }}" title="{{ text_shopping_cart }}"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_shopping_cart }}</span></a></li>
+        <li><a href="{{ checkout }}" title="{{ text_checkout }}"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_checkout }}</span></a></li>
+        <li>{{ cart }}</li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <div id="logo">{% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
+          <h1><a href="{{ home }}">{{ name }}</a></h1>
+          {% endif %}</div>
+      </div>
+      <div class="col-sm-10">
+        {{ menu }}
+      </div>
+    </div>
+  </div>
+</header>
+{% if newsletter_status %}
+<script type="text/javascript"><!--
+
+  // PopUp Newsletter
+  $(document).ready(function(){
+
+    //check cookie
+    var name = "Email"
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length !== 2){
+      setTimeout(function(){
+        $('#popUpMain').css('display','block');
+      }, 2000);
+      $('#cancel').click(function(){
+        $('#popUpMain').css('display','none');
+      });
+    }
+  });
+
+  // Form Submit
+  $('#form-newsletter').on('submit',function(e){
+    $.ajax({
+			  url: 'index.php?route=common/header/newsletter',
+			  type: 'post',
+        data: $('#form-newsletter').serialize(),
+        success: function(){
+          $('#popUpMain').css('display','none');
+        }
+		  });
+    e.preventDefault();
+    
+    // Save data in cookies
+    var email = $('#emial').val();
+    const d = new Date();
+    d.setTime(d.getTime() + (30*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie =  "Email=" + email + ";" + expires + ";path=/";
+  });
+//--></script>
+{% endif %}

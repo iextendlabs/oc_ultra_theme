@@ -1,0 +1,70 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <div class="pull-right">
+        <button type="submit" form="form-module" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+        <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+      <h1>{{ heading_title }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-module" class="form-horizontal">
+          
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="button-color">{{ entry_button_color }}</label>
+            <div class="col-sm-1">
+              <input type="color" name="module_product_page_button_color" value="{{ module_product_page_button_color }}" placeholder="{{ entry_button_color }}" id="button-color" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="text-button-color">{{ entry_button_text_color }}</label>
+            <div class="col-sm-1">
+              <input type="color" name="module_product_page_button_text_color" value="{{ module_product_page_button_text_color }}" placeholder="{{ entry_button_text_color }}" id="text-button-color" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="button-hover-color">{{ entry_button_hover_color }}</label>
+            <div class="col-sm-1">
+              <input type="color" name="module_product_page_button_hover_color" value="{{ module_product_page_button_hover_color }}" placeholder="{{ entry_button_hover_color }}" id="button-hover-color" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="button-text-hover-color">{{ entry_button_text_hover_color }}</label>
+            <div class="col-sm-1">
+              <input type="color" name="module_product_page_button_hover_text_color" value="{{ module_product_page_button_hover_text_color }}" placeholder="{{ entry_button_text_hover_color }}" id="button-text-hover-color" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="headings-color">{{ entry_headings_color }}</label>
+            <div class="col-sm-1">
+              <input type="color" name="module_product_page_headings_color" value="{{ module_product_page_headings_color }}" placeholder="{{ entry_headings_color }}" id="headings-color" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="sub-headings-color">{{ entry_sub_headings_color }}</label>
+            <div class="col-sm-1">
+              <input type="color" name="module_product_page_sub_headings_color" value="{{ module_product_page_sub_headings_color }}" placeholder="{{ entry_sub_headings_color }}" id="sub-headings-color" class="form-control"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}
