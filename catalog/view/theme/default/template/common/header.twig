@@ -41,6 +41,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap" rel="stylesheet">
 <style>
+  {% if custom_status %}
+    {{ custom_css }}
+  {% endif %}
   .panel-heading{
     background-color: {{ module_checkout_header_color }} !important;
     color: {{ module_checkout_header_text_color }} !important;

@@ -87,7 +87,10 @@ class ControllerCommonFooter extends Controller {
 		}else{
 			$data['footer_top_image'] = $this->model_tool_image->resize('no_image.png', 700, 191);
 		}
-
+		// Custom Javascript
+		$data['custom_javascript'] = $this->config->get('module_custom_javascript');
+		$data['custom_status'] = $this->config->get('module_custom_status');
+// var_dump($data['custom_javascript']);die;
 		$data['telephone'] = $this->config->get('config_telephone');
 
 		$data['scripts'] = $this->document->getScripts('footer');

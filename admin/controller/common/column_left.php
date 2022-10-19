@@ -235,6 +235,14 @@ class ControllerCommonColumnLeft extends Controller {
 
 			if ($this->user->hasPermission('access', 'extension/module/ocUltra_theme_setting')) {
 				$ocUltra[] = array(
+					'name'	   => $this->language->get('text_custom_css_javascript'),
+					'href'     => $this->url->link('extension/module/ocUltra_theme_setting/custom_css_javascript', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'extension/module/ocUltra_theme_setting')) {
+				$ocUltra[] = array(
 					'name'	   => $this->language->get('text_infinite_scroll'),
 					'href'     => $this->url->link('extension/module/ocUltra_theme_setting/infinite_scroll', 'user_token=' . $this->session->data['user_token'], true),
 					'children' => array()

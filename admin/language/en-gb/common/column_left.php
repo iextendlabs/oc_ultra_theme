@@ -85,3 +85,4 @@ $_['text_theme_setting']        = 'Theme Setting';
 $_['text_newsletter']           = 'Newsletter';
 $_['text_checkout_setting']     = 'Checkout Setting';
 $_['text_product_page_setting'] = 'Product Page Setting';
+$_['text_custom_css_javascript'] = 'Custom CSS & Javascript';

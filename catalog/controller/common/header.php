@@ -121,6 +121,10 @@ class ControllerCommonHeader extends Controller {
 		$data['module_checkout_header_text_color'] = $this->config->get('module_checkout_header_text_color');
 		$data['module_checkout_button_text_color'] = $this->config->get('module_checkout_button_text_color');
 
+		//Custom CSS
+		$data['custom_css'] = $this->config->get('module_custom_css');
+		$data['custom_status'] = $this->config->get('module_custom_status');
+
 		return $this->load->view('common/header', $data);
 	}
 }

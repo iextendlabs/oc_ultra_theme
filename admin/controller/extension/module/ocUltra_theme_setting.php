@@ -846,6 +846,78 @@ class ControllerExtensionModuleOcUltraThemeSetting extends Controller {
 		$this->response->setOutput($this->load->view('extension/module/newsletter', $data));
 	}
 
+	public function custom_css_javascript() {
+		
+		$this->load->language('extension/module/custom_css_javascript');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$this->load->model('setting/setting');
+
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			$this->request->post['module_custom_javascript'] = htmlspecialchars_decode($this->request->post['module_custom_javascript']);
+			$this->request->post['module_custom_css'] = htmlspecialchars_decode($this->request->post['module_custom_css']);
+			$this->model_setting_setting->editSetting('module_custom', $this->request->post);
+			
+			$this->session->data['success'] = $this->language->get('text_success');
+
+			$this->response->redirect($this->url->link('extension/module/ocUltra_theme_setting/custom_css_javascript', 'user_token=' . $this->session->data['user_token'] . '&type=module', true));
+		}
+
+		if (isset($this->error['warning'])) {
+			$data['error_warning'] = $this->error['warning'];
+		} else {
+			$data['error_warning'] = '';
+		}
+
+		$data['breadcrumbs'] = array();
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_home'),
+			'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('text_extension'),
+			'href' => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true)
+		);
+
+		$data['breadcrumbs'][] = array(
+			'text' => $this->language->get('heading_title'),
+			'href' => $this->url->link('extension/module/ocUltra_theme_setting/custom_css_javascript', 'user_token=' . $this->session->data['user_token'], true)
+		);
+
+		$data['action'] = $this->url->link('extension/module/ocUltra_theme_setting/custom_css_javascript', 'user_token=' . $this->session->data['user_token'], true);
+
+		$data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true);
+
+		$this->load->model('tool/image');
+
+		if (isset($this->request->post['module_custom_status'])) {
+			$data['module_custom_status'] = $this->request->post['module_custom_status'];
+		} else {
+			$data['module_custom_status'] = $this->config->get('module_custom_status');
+		}
+
+		if (isset($this->request->post['module_custom_css'])) {
+			$data['module_custom_css'] = $this->request->post['module_custom_css'];
+		} else {
+			$data['module_custom_css'] = $this->config->get('module_custom_css');
+		}
+
+		if (isset($this->request->post['module_custom_javascript'])) {
+			$data['module_custom_javascript'] = $this->request->post['module_custom_javascript'];
+		} else {
+			$data['module_custom_javascript'] = $this->config->get('module_custom_javascript');
+		}
+
+		$data['header'] = $this->load->controller('common/header');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['footer'] = $this->load->controller('common/footer');
+
+		$this->response->setOutput($this->load->view('extension/module/custom_css_javascript', $data));
+	}
+
 	protected function validate() {
 		if (!$this->user->hasPermission('modify', 'extension/module/ocUltra_theme_setting')) {
 			$this->error['warning'] = $this->language->get('error_permission');

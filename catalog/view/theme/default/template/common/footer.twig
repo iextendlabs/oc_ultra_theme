@@ -69,6 +69,11 @@
 {% for script in scripts %}
 <script src="{{ script }}" type="text/javascript"></script>
 {% endfor %}
+{% if custom_status %}
+  <script type="text/javascript"><!--
+  {{ custom_javascript }}
+//--></script>
+{% endif %}
 <!--
 OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
 Please donate via PayPal to donate@opencart.com
